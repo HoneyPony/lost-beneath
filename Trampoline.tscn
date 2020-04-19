@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprite/trampoline.png" type="Texture" id=1]
+[ext_resource path="res://Trampoline.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Trampoline"
+length = 0.34
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.18, 0.26, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5, 6 )
+
+[node name="Trampoline" type="Node2D"]
+use_parent_material = true
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
+position = Vector2( 0, -6 )
+texture = ExtResource( 1 )
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )
+anims/Trampoline = SubResource( 2 )
+next/Trampoline = "Idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

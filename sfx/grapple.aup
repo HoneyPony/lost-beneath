@@ -1,0 +1,50 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="grapple_data" version="1.3.0" audacityversion="2.2.1" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="0.0000000000" zoom="460.7241189427" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="ld46grapple" channel="2" linked="0" mute="1" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="2.238721" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="1046016">
+				<waveblock start="0">
+					<simpleblockfile filename="e00009b3.au" len="262144" min="-0.137633" max="0.138926" rms="0.003697"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e00005d2.au" len="262144" min="-0.040682" max="0.044553" rms="0.00174"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="e0000a11.au" len="262144" min="-0.017866" max="0.01858" rms="0.001018"/>
+				</waveblock>
+				<waveblock start="786432">
+					<simpleblockfile filename="e0000ef6.au" len="259584" min="-0.036668" max="0.030852" rms="0.001308"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="ld46grapple" channel="2" linked="0" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="23547">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000efd.au" len="23547" min="-0.21572" max="0.310753" rms="0.022275"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="ld46noise" channel="2" linked="0" mute="1" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="643968">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000675.au" len="262144" min="-0.001349" max="0.002465" rms="0.000269"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0000a2b.au" len="262144" min="-0.001204" max="0.001087" rms="0.000281"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="e00000de.au" len="119680" min="-0.041149" max="0.032638" rms="0.001645"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

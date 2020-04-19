@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="rocket_data" version="1.3.0" audacityversion="2.2.1" sel0="1.1710204082" sel1="1.1710204082" vpos="0" h="0.0000000000" zoom="138.3391203704" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="ld46rocket" channel="2" linked="0" mute="1" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="435456">
+				<waveblock start="0">
+					<simpleblockfile filename="e000001f.au" len="262144" min="-0.06401" max="0.051887" rms="0.003579"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0000d0d.au" len="173312" min="-0.047309" max="0.041948" rms="0.003122"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="ld46rocket" channel="2" linked="0" mute="0" solo="1" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="51642">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000ca3.au" len="51642" min="-0.06401" max="0.051887" rms="0.004724"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

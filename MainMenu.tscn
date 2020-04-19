@@ -1,0 +1,180 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://ui/play_button_place.png" type="Texture" id=1]
+[ext_resource path="res://ui/play_button_focus.png" type="Texture" id=2]
+[ext_resource path="res://GrabFocus.gd" type="Script" id=3]
+[ext_resource path="res://ui/option_button_place.png" type="Texture" id=4]
+[ext_resource path="res://ui/quit_button_place.png" type="Texture" id=5]
+[ext_resource path="res://ui/help_button_place.png" type="Texture" id=6]
+[ext_resource path="res://ui/quit_button_focus.png" type="Texture" id=7]
+[ext_resource path="res://ui/help_button_focus.png" type="Texture" id=8]
+[ext_resource path="res://ui/option_button_focus.png" type="Texture" id=9]
+[ext_resource path="res://ui/slider_handle.png" type="Texture" id=10]
+[ext_resource path="res://ui/slider_bg.png" type="Texture" id=11]
+[ext_resource path="res://ui/back_button.png" type="Texture" id=12]
+[ext_resource path="res://ui/back_button_focus.png" type="Texture" id=13]
+[ext_resource path="res://OptionsButton.gd" type="Script" id=14]
+[ext_resource path="res://QuitButton.gd" type="Script" id=15]
+[ext_resource path="res://Game.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SceneChangeButton.gd" type="Script" id=17]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 80, 4 )
+margin_left = 3.89129
+margin_right = 22.8376
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.263489
+margin_right = 0.263428
+color = Color( 0.407843, 0.407843, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+size_flags_stretch_ratio = 0.0
+custom_constants/separation = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+node_path = NodePath("PlayButton")
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 13.0
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../HelpButton")
+focus_next = NodePath("../HelpButton")
+focus_previous = NodePath("../QuitButton")
+texture_normal = ExtResource( 1 )
+texture_focused = ExtResource( 2 )
+script = ExtResource( 17 )
+scene = ExtResource( 16 )
+
+[node name="HelpButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 15.0
+margin_right = 80.0
+margin_bottom = 28.0
+focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../PlayButton")
+texture_normal = ExtResource( 6 )
+texture_focused = ExtResource( 8 )
+
+[node name="OptionsButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 30.0
+margin_right = 80.0
+margin_bottom = 43.0
+focus_neighbour_top = NodePath("../HelpButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../HelpButton")
+texture_normal = ExtResource( 4 )
+texture_focused = ExtResource( 9 )
+script = ExtResource( 14 )
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 45.0
+margin_right = 80.0
+margin_bottom = 58.0
+focus_neighbour_top = NodePath("../OptionsButton")
+focus_neighbour_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../OptionsButton")
+texture_normal = ExtResource( 5 )
+texture_focused = ExtResource( 7 )
+script = ExtResource( 15 )
+
+[node name="Options" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_top = 20.0
+margin_right = -20.0
+grow_horizontal = 0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolume" type="HBoxContainer" parent="Options"]
+margin_right = 124.0
+margin_bottom = 16.0
+alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/SFXVolume"]
+margin_left = 16.0
+margin_right = 40.574
+margin_bottom = 16.439
+rect_min_size = Vector2( 24.574, 16.439 )
+text = "SFX"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Options/SFXVolume"]
+margin_left = 44.0
+margin_right = 124.0
+margin_bottom = 6.0
+focus_neighbour_top = NodePath("../../BackButton")
+focus_neighbour_bottom = NodePath("../../MusicVolume/MusicVolumeSlider")
+focus_next = NodePath("../../MusicVolume/MusicVolumeSlider")
+focus_previous = NodePath("../../BackButton")
+size_flags_horizontal = 0
+custom_icons/grabber = ExtResource( 10 )
+custom_styles/slider = SubResource( 1 )
+max_value = 20.0
+value = 10.0
+
+[node name="MusicVolume" type="HBoxContainer" parent="Options"]
+margin_top = 18.0
+margin_right = 124.0
+margin_bottom = 34.0
+alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/MusicVolume"]
+margin_right = 40.023
+margin_bottom = 16.445
+rect_min_size = Vector2( 40.023, 16.445 )
+text = "Music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Options/MusicVolume"]
+margin_left = 44.0
+margin_right = 124.0
+margin_bottom = 6.0
+focus_neighbour_top = NodePath("../../SFXVolume/SFXVolumeSlider")
+focus_neighbour_bottom = NodePath("../../BackButton")
+focus_next = NodePath("../../BackButton")
+focus_previous = NodePath("../../SFXVolume/SFXVolumeSlider")
+size_flags_horizontal = 0
+custom_icons/grabber = ExtResource( 10 )
+custom_styles/slider = SubResource( 1 )
+max_value = 20.0
+value = 10.0
+
+[node name="BackButton" type="TextureButton" parent="Options"]
+margin_top = 36.0
+margin_right = 31.0
+margin_bottom = 49.0
+focus_neighbour_top = NodePath("../MusicVolume/MusicVolumeSlider")
+focus_neighbour_bottom = NodePath("../SFXVolume/SFXVolumeSlider")
+focus_next = NodePath("../SFXVolume/SFXVolumeSlider")
+focus_previous = NodePath("../MusicVolume/MusicVolumeSlider")
+size_flags_horizontal = 0
+texture_normal = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="VBoxContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="VBoxContainer/OptionsButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Options/BackButton" to="VBoxContainer/OptionsButton" method="_on_BackButton_pressed"]

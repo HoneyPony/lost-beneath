@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hmm.wav-62e06f52f427a3e2b682f646e6a40d0e.sample"
+
+[deps]
+
+source_file="res://sfx/hmm.wav"
+dest_files=[ "res://.import/hmm.wav-62e06f52f427a3e2b682f646e6a40d0e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=19]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform sampler2D light_viewport;
+
+float f(float x) {
+	return min(x, 1.0);
+}
+
+vec3 f3(vec3 x) {
+	return vec3(f(x.x), f(x.y), f(x.z));
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	
+	COLOR.rgb *= f3(texture(light_viewport, SCREEN_UV).rgb);
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 19 )
