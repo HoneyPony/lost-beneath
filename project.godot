@@ -17,6 +17,9 @@ _global_script_class_icons={
 
 config/name="Lost Beneath"
 run/main_scene="res://MainMenu.tscn"
+boot_splash/image="res://bg.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [display]
