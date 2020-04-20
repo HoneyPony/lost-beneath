@@ -1480,9 +1480,6 @@ position = Vector2( 5322, -3198 )
 [node name="Torch23" parent="Levels" instance=ExtResource( 68 )]
 position = Vector2( 5322, -3258 )
 
-[node name="Torch24" parent="Levels" instance=ExtResource( 68 )]
-position = Vector2( 5382, -3294 )
-
 [node name="Torch25" parent="Levels" instance=ExtResource( 68 )]
 position = Vector2( 5250, -3330 )
 
