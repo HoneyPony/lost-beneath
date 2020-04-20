@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sprites.wav-15e84188a8ab73efbff13c69fd5c7aeb.sample"
+
+[deps]
+
+source_file="res://sfx/sprites.wav"
+dest_files=[ "res://.import/sprites.wav-15e84188a8ab73efbff13c69fd5c7aeb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

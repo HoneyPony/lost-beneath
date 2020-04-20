@@ -9,6 +9,7 @@ radius = 19.1703
 
 [node name="ExtraSprites" type="Node2D"]
 use_parent_material = true
+z_index = -10
 script = ExtResource( 3 )
 
 [node name="BG" type="Sprite" parent="."]
@@ -16,16 +17,19 @@ use_parent_material = true
 texture = ExtResource( 2 )
 
 [node name="Sprite1" type="Sprite" parent="."]
+visible = false
 use_parent_material = true
 position = Vector2( -3.87, 3.57231 )
 texture = ExtResource( 1 )
 
 [node name="Sprite2" type="Sprite" parent="."]
+visible = false
 use_parent_material = true
 position = Vector2( 5.12031, -4.34631 )
 texture = ExtResource( 1 )
 
 [node name="Sprite3" type="Sprite" parent="."]
+visible = false
 use_parent_material = true
 position = Vector2( 5.12031, -4.34631 )
 texture = ExtResource( 1 )

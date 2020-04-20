@@ -41,8 +41,9 @@ func _ready():
 	active_checkpoint.activate()
 	camera = get_node("../Camera")
 	
-	for i in range(0, PARTICLES):
-		new_particle()
+	#for i in range(0, PARTICLES):
+	#	new_particle(load("res://sprite/beard_spirit.png"))
+	new_particle(load("res://sprite/beard_spirit.png"))
 
 func round_joy_axis(a, b):
 	var joy = Input.get_joy_axis(a, b)
@@ -200,14 +201,19 @@ var GRAPPLE_DELTA = 18
 
 var hitpoints = 3
 
+var using_joystick = false
+
 onready var grapple_hook = get_node("../GrappleHook")
 
 func get_grapple_target():
-	var joyx = Input.get_joy_axis(0, 2)
-	var joyy = Input.get_joy_axis(0, 3)
+	var joyx = round_joy_axis(0, 0)
+	var joyy = round_joy_axis(0, 1)
 	
-	if abs(joyx) > 0.02 and abs(joyy) > 0.02:
+	if using_joystick:
 		return global_position + Vector2(joyx, joyy).normalized() * 500
+		
+	#if abs(joyx) > 0.02 and abs(joyy) > 0.02:
+		#return global_position + Vector2(joyx, joyy).normalized() * 500
 	return get_global_mouse_position()
 
 func handle_grapple(delta):
@@ -230,7 +236,12 @@ func handle_grapple(delta):
 		var hook_vel = (grapple_target - grapple_hook.position).normalized()
 		grapple_hook.position += hook_vel * delta * 300
 
-		grapple_target = grapple_hook.position + hook_vel * 500
+		grapple_target = grapple_hook.position + hook_vel * 100
+		
+		# Degenerate case
+		if (grapple_target - grapple_hook.position).length_squared() < 0.01:
+			var fde = grapple_hook.global_position - global_position
+			grapple_target = global_position + fde * 2
 		
 		var new_dist = (grapple_hook.position - global_position).length()
 		if new_dist > max_dist:
@@ -333,10 +344,12 @@ func handle_flying(dt):
 		flight_vel_contrib = Vector2.ZERO
 		$Rocket.stop()
 
-func new_particle():
+func new_particle(tex):
 	
 	particle_count += 1
 	var part = plant_particle.instance()
+	part.get_node("Mix").texture = tex
+	part.get_node("Add").texture = tex
 	particles.append(part)
 	get_node("../").call_deferred("add_child", part)
 	
@@ -348,6 +361,18 @@ func my_slice(arr, a, b):
 var tutorial = false
 
 func _physics_process(delta):
+	get_node("/root/Root/GrapDebug").global_position = grapple_target
+	
+	if Input.get_joy_axis(0, 0) > 0.05:
+		using_joystick = true
+	if Input.get_joy_axis(0, 1) > 0.05:
+		using_joystick = true
+	if Input.is_action_pressed("mouse_back"):
+		using_joystick = false
+		
+	if not alive:
+		return
+	
 	if tutorial:
 		linear_velocity = Vector2.ZERO
 		return
@@ -461,10 +486,34 @@ func _on_grapplehook_connected(body):
 		grapple_part_start = used_particles
 		grapple_part_end = used_particles + additional
 		used_particles += additional
-		
 
+var alive = true
+onready var fade = get_node("/root/Root/Camera/Fade/Fade")
 
 func _on_damaged(body):
+	if alive:
+		hitpoints -= 1
+		if hitpoints < 1:
+		
+			hitpoints = 3
+			particle_count -= 1
+			var p = particles.pop_back()
+			p.light.queue_free()
+			p.queue_free()
+	
+	$Viz.hide()
+	$Death.play()
+	$DeathP.emitting = true
+	$DeathP.restart()
+	$DeathP.show()
+	alive = false
+	fade.play("Fade")
+
+	emit_signal("died")
+	
+	
+		
+func partial():
 	position = active_checkpoint.global_position + Vector2(0, -6)
 	linear_velocity = Vector2.ZERO
 	grapple_engaged = false
@@ -474,15 +523,14 @@ func _on_damaged(body):
 		m.queue_free()
 	midairs.clear()
 	
-	$Death.play()
-	emit_signal("died")
+	alive = true
 	
-	hitpoints -= 1
-	if hitpoints < 1:
+	$Viz.show()
+	$DeathP.hide()
+		
+func reenable_life():
 	
-		hitpoints = 3
-		particle_count -= 1
-		particles.pop_back().queue_free()
+	alive = true
 	
 func trampoline(dir):
 	if jump_contrib > 0:
@@ -495,3 +543,12 @@ func trampoline(dir):
 	
 	used_particles = 0
 	flight_extra_fac = 7
+	
+	$Tram.play()
+
+
+func _player_won(body):
+	get_tree().change_scene("res://WinScreen.tscn")
+#
+func _on_grapple_pointed(body):
+	grapple_target = body.global_position

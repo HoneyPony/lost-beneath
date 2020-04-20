@@ -1,12 +1,12 @@
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
-<project xmlns="http://audacity.sourceforge.net/xml/" projname="hmm_data" version="1.3.0" audacityversion="2.2.1" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="0.0000000000" zoom="261.4609375000" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="hmm_data" version="1.3.0" audacityversion="2.2.1" sel0="2.9755878926" sel1="2.9755878926" vpos="0" h="0.0000000000" zoom="130.7304687500" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
 	<tags/>
 	<wavetrack name="ld46hmm" channel="2" linked="0" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
 		<waveclip offset="0.00000000" colorindex="0">
-			<sequence maxsamples="262144" sampleformat="262159" numsamples="41324">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="28673">
 				<waveblock start="0">
-					<simpleblockfile filename="e000021d.au" len="41324" min="-0.105673" max="0.113083" rms="0.045188"/>
+					<simpleblockfile filename="e000024e.au" len="28673" min="-0.047475" max="0.055836" rms="0.016658"/>
 				</waveblock>
 			</sequence>
 			<envelope numpoints="0"/>

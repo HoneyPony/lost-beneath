@@ -6,12 +6,19 @@ var can_continue = false
 
 export var frames: Array
 
+export var sprites: Array
+
 onready var tex = get_node("/root/Root/CanvasLayer/Tutorial")
 onready var player = get_node("/root/Root/Player")
 
 var cur_frame = -1
 
 func advance():
+	if cur_frame == -1:
+		for s in sprites:
+			player.new_particle(s)
+		sprites.clear()
+	
 	cur_frame += 1
 	if cur_frame < frames.size():
 		tex.texture = frames[cur_frame]

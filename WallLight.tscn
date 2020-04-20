@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SetupLight.gd" type="Script" id=1]
+[ext_resource path="res://lights/wall_light.png" type="Texture" id=2]
+[ext_resource path="res://sprite/wall_light.png" type="Texture" id=3]
+[ext_resource path="res://Light.tres" type="Material" id=4]
+
+[node name="Node2D" type="Node2D"]
+use_parent_material = true
+script = ExtResource( 1 )
+flicker = 0.03
+
+[node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
+position = Vector2( 0, -1 )
+texture = ExtResource( 3 )
+
+[node name="Light" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 0.937255, 1 )
+material = ExtResource( 4 )
+position = Vector2( -0.041153, -1.23024 )
+texture = ExtResource( 2 )

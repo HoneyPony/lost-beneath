@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprite/checkpoint.png" type="Texture" id=1]
 [ext_resource path="res://Checkpoint.gd" type="Script" id=2]
 [ext_resource path="res://lights/flame.png" type="Texture" id=3]
+[ext_resource path="res://Light.tres" type="Material" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 54.3323
@@ -46,9 +47,10 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 use_parent_material = true
+z_index = -10
 texture = ExtResource( 1 )
 hframes = 23
-frame = 19
+frame = 21
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 0, -42 )
@@ -64,7 +66,9 @@ anims/Active = SubResource( 2 )
 anims/Inactive = SubResource( 3 )
 
 [node name="Flame" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 0.988235, 0.709804, 1 )
+material = ExtResource( 4 )
 position = Vector2( -0.438587, -6.50569 )
 texture = ExtResource( 3 )
 

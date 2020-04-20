@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SetupLight.gd" type="Script" id=1]
+[ext_resource path="res://lights/flame.png" type="Texture" id=2]
+[ext_resource path="res://Light.tres" type="Material" id=3]
+
+[node name="Light" type="Node2D"]
+use_parent_material = true
+script = ExtResource( 1 )
+flicker = 0.02
+
+[node name="Light" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 0.992157, 0.501961, 0.611765 )
+material = ExtResource( 3 )
+position = Vector2( 2.31047, 1.73029 )
+texture = ExtResource( 2 )

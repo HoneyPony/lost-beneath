@@ -6,6 +6,7 @@ var extra_target = null
 var vel_target = null
 
 var light
+var la = 0.3
 
 func _ready():
 	light = get_node("Light")
@@ -79,7 +80,7 @@ func _process(delta):
 	position += (target - position) * rate
 	
 	light.global_position = global_position
-	light.modulate.a = (1 - real_factor)
+	light.modulate.a = (1 - real_factor) * la
 
 func reset_to_player():
 	var radius = 7 + sin(radius_t) * 7

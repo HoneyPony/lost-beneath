@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://SetupLight.gd" type="Script" id=1]
+[ext_resource path="res://lights/floor_light.png" type="Texture" id=2]
+[ext_resource path="res://sprite/light.png" type="Texture" id=3]
+[ext_resource path="res://Light.tres" type="Material" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Gears"
+length = 0.28
+loop = true
+step = 0.07
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="Node2D" type="Node2D"]
+use_parent_material = true
+script = ExtResource( 1 )
+flicker = 0.02
+
+[node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
+position = Vector2( 0, -1 )
+texture = ExtResource( 3 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Gears"
+anims/Gears = SubResource( 1 )
+
+[node name="Light" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 0.937255, 1 )
+material = ExtResource( 4 )
+position = Vector2( -1.10326, -114.824 )
+texture = ExtResource( 2 )

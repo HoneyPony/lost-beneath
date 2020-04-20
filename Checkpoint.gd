@@ -32,8 +32,12 @@ func activate():
 	if flame != null:
 		flame.show()
 	$AnimationPlayer.play("Active")
+	
 
 func _on_player_entered(player):
+	if player.active_checkpoint != self:
+		player.get_node("Check").play()
+	
 	player.active_checkpoint.deactivate()
 	player.active_checkpoint = self
 	activate()
