@@ -1827,6 +1827,7 @@ position = Vector2( 0.291992, 21.6072 )
 shape = SubResource( 28 )
 
 [node name="GrapDebug" type="Sprite" parent="."]
+visible = false
 z_index = 30
 z_as_relative = false
 texture = ExtResource( 9 )
